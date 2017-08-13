@@ -1,11 +1,13 @@
-import { Chromeless } from 'chromeless';
+import { Chromeless, ChromelessOptions } from 'chromeless';
+import { DeviceMetrics } from '../types/chromeless';
 import * as logger from 'winston';
 
 interface PdfOptions {
   userAgentString: string;
+  viewport: DeviceMetrics;
 }
 
-export async function pdfFromURL({ url, options }: { url: string, options: PdfOptions }) {
+function startChromeless(options: PdfOptions): Chromeless<{}> {
   const remote = Boolean(process.env.CHROMELESS_ENDPOINT_URL);
 
   const chromelessConfig = remote ? {
@@ -16,6 +18,13 @@ export async function pdfFromURL({ url, options }: { url: string, options: PdfOp
   } : { launchChrome: false };
 
   const chromeless = new Chromeless(chromelessConfig);
+
+  const { viewport } = options;
+  return chromeless.setViewport(viewport);
+}
+
+export async function pdfFromURL({ url, options }: { url: string, options: PdfOptions }) {
+  const chromeless = startChromeless(options);
 
   if (options && options.userAgentString) {
     const { userAgentString } = options;
@@ -33,16 +42,7 @@ export async function pdfFromURL({ url, options }: { url: string, options: PdfOp
 }
 
 export async function pdfFromHTML({ html, options }: { html: string, options: PdfOptions }) {
-  const remote = Boolean(process.env.CHROMELESS_ENDPOINT_URL);
-
-  const chromelessConfig = remote ? {
-    remote: {
-      endpointUrl: process.env.CHROMELESS_ENDPOINT_URL,
-      apiKey: process.env.CHROMELESS_ENDPOINT_API_KEY,
-    },
-  } : { launchChrome: false };
-
-  const chromeless = new Chromeless(chromelessConfig);
+  const chromeless = startChromeless(options);
 
   if (options && options.userAgentString) {
     const { userAgentString } = options;
