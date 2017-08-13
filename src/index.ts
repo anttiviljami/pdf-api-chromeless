@@ -1,19 +1,31 @@
-import { Chromeless } from 'chromeless';
+import * as Hapi from 'hapi';
 import * as logger from 'winston';
 
-async function run() {
-  const chromeless = new Chromeless({
-    launchChrome: false,
+async function start() {
+  const server = new Hapi.Server();
+  server.connection({
+    host: '0.0.0.0',
+    port: 8000,
   });
 
-  const screenshot = await chromeless
-    .goto('https://www.medium.com/apiops')
-    .screenshot();
+  // Add the route
+  server.route({
+    method: 'GET',
+    path: '/test',
+    handler: (request, reply) => {
+      return reply({ test: 1 });
+    },
+  });
 
-  logger.info(screenshot); // prints local file path or S3 url
+  try {
+    await server.start();
+    logger.info(`Server started at ${server.info.uri}`);
+  } catch (e) {
+    logger.error('Server failed to start', e);
+    process.exit(1);
+  }
 
-  await chromeless.end();
+  return server;
 }
 
-run()
-  .catch(console.error.bind(console));
+start();
