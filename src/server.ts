@@ -1,12 +1,11 @@
 import * as Hapi from 'hapi';
-import * as Joi from 'joi';
 
 import * as inert from 'inert';
 import * as vision from 'vision';
 import * as blipp from 'blipp';
 import * as swagger from 'hapi-swagger';
 
-import { pdfHandler } from './handlers/pdf';
+import { routes } from './routes';
 export async function createServer() {
   const server = new Hapi.Server();
   server.connection({
@@ -15,29 +14,7 @@ export async function createServer() {
   });
 
   // Add the route
-  server.route({
-    method: 'POST',
-    path: '/pdf',
-    config: {
-      tags: ['api'],
-      validate: {
-      payload: Joi.object().keys({
-        url: Joi.string().uri().required()
-          .example('https://google.com'),
-        options: Joi.object({
-          userAgentString: Joi.string()
-            .example('Mozilla'),
-          }),
-        }),
-      },
-      response: {
-        schema: Joi.object().keys({
-          pdf: Joi.string().example('https://s3.awscloud.com/google.pdf'),
-        }),
-      },
-      handler: (req, reply) => pdfHandler(req, reply),
-    },
-  });
+  server.route(routes);
 
   server.register([
     blipp, // show our routes on startup
