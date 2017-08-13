@@ -2,15 +2,26 @@
   "name": "pdf-api-livecoding",
   "version": "1.0.0",
   "description": "An API for PDF generation out of html websites",
-  "main": "src/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node dist/src/index.js",
+    "build": "tsc",
+    "watch-build": "tsc -w",
+    "lint": "tslint --project .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chromeless": "^1.2.0"
+    "chromeless": "^1.2.0",
+    "hapi": "^16.5.2",
+    "typescript": "^2.4.2",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.20",
+    "@types/winston": "^2.3.4",
+    "tslint": "^5.6.0"
   }
 }
