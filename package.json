@@ -2,7 +2,11 @@
   "name": "pdf-api-livecoding",
   "version": "1.0.0",
   "description": "An API for PDF generation out of html websites",
+  "repository": "https://github.com/anttiviljami/pdf-api-livecoding",
   "main": "dist/src/index.js",
+  "engines": {
+    "node": "^8.0.0"
+  },
   "scripts": {
     "start": "node dist/src/index.js",
     "build": "tsc",
@@ -10,23 +14,13 @@
     "watch-build": "tsc -w",
     "watch-server": "nodemon -w dist/src -x node dist/src/index.js",
     "lint": "tslint --project .",
-    "test": "mocha test dist/test"
+    "test": "mocha test dist/test",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "blipp": "^2.3.0",
-    "chromeless": "^1.2.0",
-    "hapi": "^16.5.2",
-    "hapi-swagger": "^7.7.0",
-    "inert": "^4.2.1",
-    "joi": "^10.6.0",
-    "typescript": "^2.4.2",
-    "vision": "^4.1.1",
-    "winston": "^2.3.1"
-  },
-  "devDependencies": {
     "@types/chai": "^4.0.3",
     "@types/hapi": "^16.1.8",
     "@types/inert": "^4.2.2",
@@ -34,9 +28,20 @@
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.20",
     "@types/winston": "^2.3.4",
+    "blipp": "^2.3.0",
     "chai": "^4.1.1",
-    "concurrently": "^3.5.0",
+    "chromeless": "^1.2.0",
+    "hapi": "^16.5.2",
+    "hapi-swagger": "^7.7.0",
+    "inert": "^4.2.1",
+    "joi": "^10.6.0",
     "mocha": "^3.5.0",
+    "typescript": "^2.4.2",
+    "vision": "^4.1.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
     "nodemon": "^1.11.0",
     "tslint": "^5.6.0"
   }

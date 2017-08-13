@@ -6,9 +6,16 @@ interface PdfOptions {
 }
 
 export async function pdfFromURL({ url, options }: { url: string, options: PdfOptions }) {
-  const chromeless = new Chromeless({
-    launchChrome: false,
-  });
+  const remote = Boolean(process.env.CHROMELESS_ENDPOINT_URL);
+
+  const chromelessConfig = remote ? {
+    remote: {
+      endpointUrl: process.env.CHROMELESS_ENDPOINT_URL,
+      apiKey: process.env.CHROMELESS_ENDPOINT_API_KEY,
+    },
+  } : { launchChrome: false };
+
+  const chromeless = new Chromeless(chromelessConfig);
 
   if (options && options.userAgentString) {
     const { userAgentString } = options;
@@ -23,18 +30,4 @@ export async function pdfFromURL({ url, options }: { url: string, options: PdfOp
 
   await chromeless.end();
   return pdf;
-}
-
-export async function screenshotFromURL(url: string) {
-  const chromeless = new Chromeless({
-    launchChrome: false,
-  });
-
-  logger.info(`Visiting URL ${url}...`);
-  await chromeless.goto(url);
-  logger.info('Taking a screenshot...');
-  const screenshot = chromeless.screenshot();
-
-  await chromeless.end();
-  return screenshot;
 }
