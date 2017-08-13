@@ -1,7 +1,7 @@
 {
   "name": "pdf-api-livecoding",
   "version": "1.0.0",
-  "description": "",
+  "description": "An API for PDF generation out of html websites",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
