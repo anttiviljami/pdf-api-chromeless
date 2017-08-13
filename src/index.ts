@@ -1,18 +1,7 @@
 import * as Hapi from 'hapi';
 import * as logger from 'winston';
 
-import { screenshotURL } from './util/chromeless';
-
-async function pdfHandler(request: Hapi.Request, reply: Hapi.ReplyNoContinue) {
-  try {
-    const { url } = request.payload;
-    const screenshot = await screenshotURL(url);
-    return reply({ screenshot });
-  } catch (err) {
-    return reply({ error: err.message })
-      .code(400);
-  }
-}
+import { pdfHandler } from './handlers/pdf';
 
 async function start() {
   const server = new Hapi.Server();
