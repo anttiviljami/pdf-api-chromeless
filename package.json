@@ -15,13 +15,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "blipp": "^2.3.0",
     "chromeless": "^1.2.0",
     "hapi": "^16.5.2",
+    "hapi-swagger": "^7.7.0",
+    "inert": "^4.2.1",
+    "joi": "^10.6.0",
     "typescript": "^2.4.2",
+    "vision": "^4.1.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/hapi": "^16.1.8",
+    "@types/inert": "^4.2.2",
+    "@types/joi": "^10.4.1",
     "@types/node": "^8.0.20",
     "@types/winston": "^2.3.4",
     "nodemon": "^1.11.0",
