@@ -1,7 +1,7 @@
 {
-  "name": "pdf-api-livecoding",
+  "name": "pdf-api-chromeless",
   "version": "1.0.0",
-  "description": "An API for PDF generation out of html websites",
+  "description": "A microservice for HTML to PDF generation powered by Chromeless",
   "repository": "https://github.com/anttiviljami/pdf-api-livecoding",
   "main": "dist/src/index.js",
   "engines": {

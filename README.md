@@ -1,7 +1,7 @@
-# PDF API Livecoding
+# PDF API Chromeless
 [![Build Status](https://travis-ci.org/anttiviljami/pdf-api-livecoding.svg?branch=master)](https://travis-ci.org/anttiviljami/pdf-api-livecoding)
 
-An API for PDF generation out of html websites
+A microservice for HTML to PDF generation powered by [Chromeless](https://github.com/graphcool/chromeless)
 
 ## Getting started
 
