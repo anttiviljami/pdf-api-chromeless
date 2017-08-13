@@ -7,6 +7,7 @@
     "start": "node dist/src/index.js",
     "build": "tsc",
     "watch-build": "tsc -w",
+    "watch-server": "nodemon -w dist/src -x node dist/src/index.js",
     "lint": "tslint --project .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,7 @@
     "@types/hapi": "^16.1.8",
     "@types/node": "^8.0.20",
     "@types/winston": "^2.3.4",
+    "nodemon": "^1.11.0",
     "tslint": "^5.6.0"
   }
 }

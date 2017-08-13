@@ -1,20 +1,31 @@
 import * as Hapi from 'hapi';
 import * as logger from 'winston';
 
+import { screenshotURL } from './util/chromeless';
+
+async function pdfHandler(request: Hapi.Request, reply: Hapi.ReplyNoContinue) {
+  try {
+    const { url } = request.payload;
+    const screenshot = await screenshotURL(url);
+    return reply({ screenshot });
+  } catch (err) {
+    return reply({ error: err.message })
+      .code(400);
+  }
+}
+
 async function start() {
   const server = new Hapi.Server();
   server.connection({
     host: '0.0.0.0',
-    port: 8000,
+    port: process.env.PORT || 8000,
   });
 
   // Add the route
   server.route({
-    method: 'GET',
-    path: '/test',
-    handler: (request, reply) => {
-      return reply({ test: 1 });
-    },
+    method: 'POST',
+    path: '/pdf',
+    handler: (req, reply) => pdfHandler(req, reply),
   });
 
   try {
