@@ -16,9 +16,11 @@ Your server is now running on [localhost:8000](http://localhost:8000)
 
 ## #APIOpsLive Live Coding
 
-The development of this microservice was livestreamed entirely on [twitch.tv](https://twitch.tv/anttiviljami)
+The development of this microservice was livestreamed on [twitch.tv](https://twitch.tv/anttiviljami).
 
-Read more on Medium.com:
+You can watch the entire live coding session on [YouTube](https://youtu.be/hDotI9wYH-s)
+
+Read more about it on Medium.com:
 
 * [Blog Post](https://medium.com/apiops/lets-try-live-api-coding-with-forbes-featured-hacker-viljami-kuosmanen-a945d1301720)
 * [Postmortem](https://medium.com/apiops/sunday-afternoon-apiopslive-building-api-from-scratch-with-viljami-kuosmanen-a049610efc4c)
