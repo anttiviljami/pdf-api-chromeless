@@ -18,7 +18,7 @@ Your server is now running on [localhost:8000](http://localhost:8000)
 
 The development of this microservice was livestreamed on [twitch.tv](https://twitch.tv/anttiviljami).
 
-You can watch the entire live coding session on [YouTube](https://youtu.be/hDotI9wYH-s)
+You can watch the entire live coding session on [YouTube](https://youtu.be/fcNGFPUrAjg)
 
 Read more about it on Medium.com:
 
